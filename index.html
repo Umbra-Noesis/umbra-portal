@@ -1,430 +1,558 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Umbra-Noesis Portal — Legal, Licensing & Corporate Hub</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="Umbra-Noesis Portal — official legal, licensing, IP, corporate structure, vendor onboarding, and support hub for the Umbra-Noesis ecosystem."
-  />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Umbra-Noesis Portal — Legal, Licensing & Corporate Hub</title>
+    <meta name="description" content="The official legal, licensing, IP, corporate structure, and vendor access hub for the Umbra-Noesis ecosystem."/>
+    <meta property="og:title" content="Umbra-Noesis Portal"/>
+    <meta property="og:description" content="Official legal, licensing, intellectual property, and corporate access point for the Umbra-Noesis ecosystem."/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://umbra-noesis.net/"/>
+    <link rel="icon" href="assets/img/un-main-logo.png" type="image/png"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
-  <!-- Tailwind via CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+        :root { --copper: #B87333; --gold: #C9940A; --blue: #00B4D8; }
 
-  <!-- Font Awesome (icons) -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    integrity="sha512-xxxxxxxx"
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+        body { background-color: #000000; font-family: ui-sans-serif, system-ui, sans-serif; }
+        .font-display { font-family: 'Chakra Petch', ui-sans-serif, sans-serif; }
+        .font-hud     { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
 
-  <!-- Umbra-Noesis base colors (optional tweak zone) -->
-  <style>
-    .un-accent {
-      @apply text-[#B87333];
-    }
-    .un-pill {
-      @apply inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/80 px-3 py-1.5 text-xs font-medium text-slate-300;
-    }
-    .un-section-card {
-      @apply rounded-2xl border border-slate-800/70 bg-slate-950/60 p-6 sm:p-8 shadow-lg shadow-black/40;
-    }
-  </style>
+        /* ── Circuit hero — copper dominant (entity / governance layer) ── */
+        .circuit-hero {
+            background-color: #000000;
+            background-image:
+                linear-gradient(rgba(185,115,51,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(185,115,51,0.05) 1px, transparent 1px),
+                radial-gradient(ellipse at 8% 55%, rgba(185,115,51,0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 88% 12%, rgba(0,180,216,0.07) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 95%, rgba(185,115,51,0.05) 0%, transparent 40%);
+            background-size: 44px 44px, 44px 44px, 100% 100%, 100% 100%, 100% 100%;
+        }
+
+        .ring-copper { border: 1px solid rgba(185,115,51,0.45); box-shadow: 0 0 14px rgba(185,115,51,0.25), inset 0 0 14px rgba(185,115,51,0.04); }
+        .ring-blue   { border: 1px solid rgba(0,180,216,0.35);  box-shadow: 0 0 10px rgba(0,180,216,0.2), inset 0 0 10px rgba(0,180,216,0.03); }
+
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: linear-gradient(135deg, #B87333, #9A6128);
+            color: #000; font-weight: 700; font-size: 0.875rem;
+            padding: 0.75rem 1.5rem; border-radius: 0.75rem;
+            transition: all 0.3s ease; text-decoration: none;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #C9940A, #B87333);
+            box-shadow: 0 0 28px rgba(185,115,51,0.65), 0 0 55px rgba(185,115,51,0.25);
+            transform: translateY(-1px);
+        }
+        .btn-ghost {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            border: 1px solid rgba(185,115,51,0.35); color: #B87333;
+            font-weight: 600; font-size: 0.875rem;
+            padding: 0.75rem 1.5rem; border-radius: 0.75rem;
+            transition: all 0.3s ease; text-decoration: none; background: transparent;
+        }
+        .btn-ghost:hover {
+            border-color: #B87333;
+            box-shadow: 0 0 22px rgba(185,115,51,0.4), 0 0 44px rgba(185,115,51,0.15);
+            background: rgba(185,115,51,0.06); transform: translateY(-1px);
+        }
+        .btn-nav {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            border: 1px solid rgba(185,115,51,0.3); color: #B87333;
+            font-weight: 500; font-size: 0.75rem;
+            padding: 0.375rem 0.875rem; border-radius: 9999px;
+            transition: all 0.25s ease; text-decoration: none; background: transparent;
+        }
+        .btn-nav:hover { border-color: #B87333; box-shadow: 0 0 16px rgba(185,115,51,0.35); color: #C9940A; }
+
+        .card {
+            background: #0D1117; border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 1rem; transition: all 0.3s ease;
+        }
+        .card:hover {
+            border-color: rgba(185,115,51,0.3);
+            box-shadow: 0 0 22px rgba(185,115,51,0.08), 0 8px 32px rgba(0,0,0,0.45);
+            transform: translateY(-2px);
+        }
+
+        .section-block {
+            background: #0D1117; border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 1.25rem; padding: 2rem;
+        }
+
+        .text-copper      { color: #B87333; }
+        .text-blue        { color: #00B4D8; }
+        .text-glow-copper { color: #B87333; text-shadow: 0 0 24px rgba(185,115,51,0.5); }
+        .text-glow-blue   { color: #00B4D8; text-shadow: 0 0 24px rgba(0,180,216,0.5); }
+
+        .divider      { height: 1px; background: linear-gradient(90deg, transparent, rgba(185,115,51,0.25), transparent); }
+        .divider-blue { height: 1px; background: linear-gradient(90deg, transparent, rgba(0,180,216,0.2), transparent); }
+
+        .nav-bar { border-bottom: 1px solid rgba(185,115,51,0.1); box-shadow: 0 1px 24px rgba(185,115,51,0.04); }
+
+        .badge-copper {
+            background: rgba(185,115,51,0.12); border: 1px solid rgba(185,115,51,0.35);
+            color: #B87333; font-size: 0.65rem; font-weight: 700;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            padding: 0.2rem 0.65rem; border-radius: 9999px;
+        }
+        .badge-blue {
+            background: rgba(0,180,216,0.1); border: 1px solid rgba(0,180,216,0.3);
+            color: #00B4D8; font-size: 0.65rem; font-weight: 700;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            padding: 0.2rem 0.65rem; border-radius: 9999px;
+        }
+
+        .eco-link {
+            background: #0D1117; border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 0.75rem; padding: 0.75rem 1rem;
+            text-decoration: none; transition: all 0.25s ease;
+            display: block;
+        }
+        .eco-link:hover {
+            border-color: rgba(185,115,51,0.4);
+            box-shadow: 0 0 16px rgba(185,115,51,0.1);
+            transform: translateY(-1px);
+        }
+
+        .contact-row {
+            display: flex; align-items: flex-start; gap: 1rem;
+            padding: 1rem; border-radius: 0.75rem;
+            border: 1px solid rgba(255,255,255,0.05);
+            background: #111827; transition: border-color 0.25s;
+        }
+        .contact-row:hover { border-color: rgba(185,115,51,0.25); }
+    </style>
 </head>
-<body class="bg-slate-950 text-slate-100 antialiased">
-  <!-- Page wrapper -->
-  <div class="min-h-screen flex flex-col">
+<body class="text-slate-100 antialiased">
 
-    <!-- Top bar / nav -->
-    <header class="border-b border-slate-800/70 bg-slate-950/80 backdrop-blur">
-      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div class="flex h-16 items-center justify-between gap-4">
-
-          <!-- Left: Brand -->
-          <a href="https://umbra-noesis.com" class="flex items-center gap-3 group">
-            <div class="h-9 w-9 rounded-xl border border-slate-700 bg-slate-900/80 flex items-center justify-center text-xs font-semibold tracking-tight">
-              <!-- Replace with logo img if desired -->
-              <span class="text-[#B87333] group-hover:text-[#B87333] transition-colors">UN</span>
+<!-- ── Nav ── -->
+<header class="nav-bar sticky top-0 z-50" style="background: rgba(0,0,0,0.88); backdrop-filter: blur(14px);">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
+        <a href="index.html" class="flex items-center gap-3 group">
+            <div style="width:36px;height:36px;border-radius:0.6rem;overflow:hidden;border:1px solid rgba(185,115,51,0.35);background:rgba(185,115,51,0.06);display:flex;align-items:center;justify-content:center;">
+                <img src="assets/img/un-main-logo.png" alt="Umbra-Noesis" style="width:30px;height:30px;object-fit:contain;"/>
             </div>
             <div class="flex flex-col leading-tight">
-              <span class="text-sm font-semibold tracking-wide text-slate-50 group-hover:text-[#B87333] transition-colors">
-                Umbra-Noesis
-              </span>
-              <span class="text-[11px] text-slate-400">
-                Official Portal · Legal & Licensing
-              </span>
+                <span class="font-display font-semibold text-sm tracking-wide text-glow-copper">Umbra-Noesis</span>
+                <span class="font-hud text-[10px] text-slate-500 tracking-widest uppercase">Official Portal · Legal &amp; Licensing</span>
             </div>
-          </a>
+        </a>
+        <nav class="flex items-center gap-2">
+            <a href="#licensing"   class="btn-nav hidden md:inline-flex">Licensing</a>
+            <a href="#ip"          class="btn-nav hidden md:inline-flex">IP</a>
+            <a href="#corp"        class="btn-nav hidden md:inline-flex">Corporate</a>
+            <a href="#contact"     class="btn-nav hidden sm:inline-flex">Contact</a>
+            <a href="https://umbra-noesis.com" class="btn-nav"><i class="fa-solid fa-arrow-left text-[10px]"></i> Ecosystem</a>
+        </nav>
+    </div>
+</header>
 
-          <!-- Right: Nav links -->
-          <nav class="flex items-center gap-3 text-xs sm:text-sm">
-            <a href="https://umbra-noesis.com" class="text-slate-300 hover:text-[#B87333] transition-colors">
-              Ecosystem Home
-            </a>
-            <a href="#licensing" class="text-slate-300 hover:text-[#B87333] transition-colors">
-              Licensing
-            </a>
-            <a href="#ip" class="text-slate-300 hover:text-[#B87333] transition-colors hidden sm:inline">
-              IP & Trademarks
-            </a>
-            <a href="#corp-structure" class="text-slate-300 hover:text-[#B87333] transition-colors hidden sm:inline">
-              Corporate
-            </a>
-            <a href="#support" class="text-slate-300 hover:text-[#B87333] transition-colors hidden sm:inline">
-              Support
-            </a>
+<!-- ── Hero ── -->
+<section class="circuit-hero pt-14 pb-10 sm:pt-20 sm:pb-14">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-[1fr,320px] gap-12 items-start">
 
-            <!-- Portal pill (current) -->
-            <span class="un-pill">
-              <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
-              <span>Umbra-Noesis Portal</span>
-            </span>
-          </nav>
+            <!-- Left: identity + quick nav -->
+            <div>
+                <div class="flex items-center gap-3 mb-5">
+                    <span class="badge-copper"><i class="fa-solid fa-scale-balanced mr-1"></i>Official Portal</span>
+                    <span class="font-hud text-xs text-slate-500 tracking-widest uppercase">Legal · Licensing · Corporate</span>
+                </div>
+
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="relative flex items-center justify-center shrink-0" style="width:72px;height:72px;">
+                        <div class="ring-copper absolute inset-0" style="border-radius:1rem;"></div>
+                        <div class="ring-blue absolute" style="inset:5px;border-radius:0.75rem;"></div>
+                        <img src="assets/img/un-main-logo.png" alt="Umbra-Noesis" style="width:50px;height:50px;object-fit:contain;position:relative;z-index:1;"/>
+                    </div>
+                    <div>
+                        <h1 class="font-display text-3xl sm:text-4xl font-bold text-slate-50 leading-tight">Umbra-Noesis Portal</h1>
+                        <p class="font-hud text-xs text-slate-500 mt-1 tracking-wider">umbra-noesis.net</p>
+                    </div>
+                </div>
+
+                <p class="text-base sm:text-lg text-slate-300 leading-relaxed mb-8 max-w-2xl">
+                    The central access point for <span class="text-copper">licensing, intellectual property, corporate structure,</span> and vendor onboarding across the Umbra-Noesis ecosystem. All official legal and governance documentation lives here.
+                </p>
+
+                <!-- Section quick-jump -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <a href="#licensing" class="card p-3 text-center group">
+                        <i class="fa-solid fa-file-contract text-copper text-base mb-1.5 block"></i>
+                        <p class="font-display text-xs font-semibold text-slate-200 group-hover:text-copper transition-colors">Licensing</p>
+                    </a>
+                    <a href="#ip" class="card p-3 text-center group">
+                        <i class="fa-solid fa-shield-halved text-copper text-base mb-1.5 block"></i>
+                        <p class="font-display text-xs font-semibold text-slate-200 group-hover:text-copper transition-colors">IP &amp; Trademarks</p>
+                    </a>
+                    <a href="#corp" class="card p-3 text-center group">
+                        <i class="fa-solid fa-sitemap text-copper text-base mb-1.5 block"></i>
+                        <p class="font-display text-xs font-semibold text-slate-200 group-hover:text-copper transition-colors">Corporate</p>
+                    </a>
+                    <a href="#contact" class="card p-3 text-center group">
+                        <i class="fa-solid fa-envelope text-copper text-base mb-1.5 block"></i>
+                        <p class="font-display text-xs font-semibold text-slate-200 group-hover:text-copper transition-colors">Contact</p>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right: ecosystem links -->
+            <aside>
+                <p class="font-hud text-xs tracking-[0.22em] uppercase mb-3 text-copper">Ecosystem</p>
+                <div class="space-y-2">
+                    <a href="https://umbra-noesis.com" class="eco-link">
+                        <p class="font-display font-semibold text-xs text-slate-100">Umbra-Noesis</p>
+                        <p class="font-hud text-[10px] text-slate-500">umbra-noesis.com</p>
+                    </a>
+                    <a href="https://eve-systems.com" class="eco-link">
+                        <p class="font-display font-semibold text-xs text-slate-100">EVE Systems</p>
+                        <p class="font-hud text-[10px] text-slate-500">eve-systems.com</p>
+                    </a>
+                    <a href="https://umbra-noesis-os.net" class="eco-link">
+                        <p class="font-display font-semibold text-xs text-slate-100">EVE OS</p>
+                        <p class="font-hud text-[10px] text-slate-500">umbra-noesis-os.net</p>
+                    </a>
+                    <a href="https://evaa-cognition.com" class="eco-link">
+                        <p class="font-display font-semibold text-xs text-slate-100">EVAA Cognition</p>
+                        <p class="font-hud text-[10px] text-slate-500">evaa-cognition.com</p>
+                    </a>
+                    <a href="https://aacp-stack.net" class="eco-link">
+                        <p class="font-display font-semibold text-xs text-slate-100">AACP Stack</p>
+                        <p class="font-hud text-[10px] text-slate-500">aacp-stack.net</p>
+                    </a>
+                    <a href="https://pce-system.com" class="eco-link">
+                        <p class="font-display font-semibold text-xs text-slate-100">PCe Systems</p>
+                        <p class="font-hud text-[10px] text-slate-500">pce-system.com</p>
+                    </a>
+                    <a href="https://umbra-ai.link" class="eco-link">
+                        <p class="font-display font-semibold text-xs text-slate-100">Umbra Link</p>
+                        <p class="font-hud text-[10px] text-slate-500">umbra-ai.link</p>
+                    </a>
+                    <a href="https://umbra-noesis-vpmn.net" class="eco-link">
+                        <p class="font-display font-semibold text-xs text-slate-100">VPMN</p>
+                        <p class="font-hud text-[10px] text-slate-500">umbra-noesis-vpmn.net</p>
+                    </a>
+                </div>
+            </aside>
+
         </div>
-      </div>
-    </header>
+    </div>
+</section>
 
-    <!-- Main content -->
-    <main class="flex-1">
-      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10 sm:py-14 space-y-10">
-
-        <!-- Hero -->
-        <section class="grid gap-8 lg:grid-cols-[3fr,2fr] items-start">
-          <div class="space-y-5">
-            <span class="un-pill">
-              <i class="fa-solid fa-scale-balanced text-[10px]"></i>
-              <span>Official Company Access Point</span>
-            </span>
-
-            <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight text-slate-50">
-              Umbra-Noesis Portal
-            </h1>
-
-            <p class="text-sm sm:text-base text-slate-300 max-w-xl">
-              The Umbra-Noesis Portal is the central hub for
-              <span class="text-[#B87333]">licensing, intellectual property, corporate structure, vendor onboarding,</span>
-              and official company updates across the Umbra-Noesis ecosystem.
-            </p>
-
-            <div class="grid gap-4 sm:grid-cols-3 text-xs sm:text-sm">
-              <div class="un-section-card">
-                <div class="flex items-center gap-2 mb-1.5">
-                  <i class="fa-solid fa-file-contract text-[#B87333] text-xs"></i>
-                  <span class="font-semibold text-slate-100">Licensing Terms</span>
-                </div>
-                <p class="text-slate-400">
-                  Current Umbra-Noesis license and archived versions, including component licensing for AACP, PCe, EVAA, E.V.E., and EVE OS.
-                </p>
-              </div>
-
-              <div class="un-section-card">
-                <div class="flex items-center gap-2 mb-1.5">
-                  <i class="fa-solid fa-shield-halved text-[#B87333] text-xs"></i>
-                  <span class="font-semibold text-slate-100">Intellectual Property</span>
-                </div>
-                <p class="text-slate-400">
-                  Trademarks, patents (filed and pending), copyright notices, and branding usage guidelines for the Umbra-Noesis ecosystem.
-                </p>
-              </div>
-
-              <div class="un-section-card">
-                <div class="flex items-center gap-2 mb-1.5">
-                  <i class="fa-solid fa-sitemap text-[#B87333] text-xs"></i>
-                  <span class="font-semibold text-slate-100">Corporate & Vendor</span>
-                </div>
-                <p class="text-slate-400">
-                  Company structure, vendor and OEM integration details, and official support channels for partners and clients.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Ecosystem module quick links -->
-          <aside class="un-section-card space-y-4">
-            <h2 class="text-sm font-semibold text-slate-100">
-              Umbra-Noesis Ecosystem Modules
-            </h2>
-            <p class="text-xs text-slate-400">
-              The Portal connects the legal and corporate side of Umbra-Noesis to each technical subsystem.
-            </p>
-            <div class="grid grid-cols-2 gap-2 text-xs">
-              <a href="https://umbra-noesis.com" class="rounded-xl border border-slate-800 bg-slate-900/60 px-3 py-2 hover:border-[#B87333] hover:text-[#B87333] transition-colors">
-                <span class="block font-semibold text-[11px]">Ecosystem Main</span>
-                <span class="block text-[10px] text-slate-400">umbra-noesis.com</span>
-              </a>
-              <a href="https://aacp-stack.net" class="rounded-xl border border-slate-800 bg-slate-900/60 px-3 py-2 hover:border-[#B87333] hover:text-[#B87333] transition-colors">
-                <span class="block font-semibold text-[11px]">AACP Stack</span>
-                <span class="block text-[10px] text-slate-400">aacp-stack.net</span>
-              </a>
-              <a href="https://pce-system.com" class="rounded-xl border border-slate-800 bg-slate-900/60 px-3 py-2 hover:border-[#B87333] hover:text-[#B87333] transition-colors">
-                <span class="block font-semibold text-[11px]">PCe Systems</span>
-                <span class="block text-[10px] text-slate-400">pce-system.com</span>
-              </a>
-              <a href="https://evaa-cognition.com" class="rounded-xl border border-slate-800 bg-slate-900/60 px-3 py-2 hover:border-[#B87333] hover:text-[#B87333] transition-colors">
-                <span class="block font-semibold text-[11px]">EVAA Cognition</span>
-                <span class="block text-[10px] text-slate-400">evaa-cognition.com</span>
-              </a>
-              <a href="https://eve-systems.com" class="rounded-xl border border-slate-800 bg-slate-900/60 px-3 py-2 hover:border-[#B87333] hover:text-[#B87333] transition-colors">
-                <span class="block font-semibold text-[11px]">EVE Systems</span>
-                <span class="block text-[10px] text-slate-400">eve-systems.com</span>
-              </a>
-              <a href="https://umbra-ai.link" class="rounded-xl border border-slate-800 bg-slate-900/60 px-3 py-2 hover:border-[#B87333] hover:text-[#B87333] transition-colors">
-                <span class="block font-semibold text-[11px]">Umbra Link</span>
-                <span class="block text-[10px] text-slate-400">umbra-ai.link</span>
-              </a>
-              <a href="https://umbra-noesis-os.com" class="rounded-xl border border-slate-800 bg-slate-900/60 px-3 py-2 hover:border-[#B87333] hover:text-[#B87333] transition-colors">
-                <span class="block font-semibold text-[11px]">EVE OS</span>
-                <span class="block text-[10px] text-slate-400">umbra-noesis-os.com</span>
-              </a>
-              <a href="mailto:admin@umbra-noesis.com" class="rounded-xl border border-slate-800 bg-slate-900/60 px-3 py-2 hover:border-emerald-400 hover:text-emerald-200 transition-colors">
-                <span class="block font-semibold text-[11px]">Contact Portal</span>
-                <span class="block text-[10px] text-slate-400">admin@umbra-noesis.com</span>
-              </a>
-            </div>
-          </aside>
-        </section>
-
-        <!-- Licensing Terms -->
-        <section id="licensing" class="space-y-4">
-          <h2 class="text-xl sm:text-2xl font-semibold text-slate-50">
-            Licensing Terms
-          </h2>
-          <div class="un-section-card space-y-4 text-sm text-slate-300">
-            <p>
-              This section will contain the current Umbra-Noesis license, including the rights and restrictions
-              for using the Umbra-Noesis ecosystem, components, and derived tooling.
-            </p>
-            <div class="grid gap-4 sm:grid-cols-3 text-xs sm:text-sm">
-              <div>
-                <h3 class="font-semibold text-slate-100 mb-1">Current License</h3>
-                <p class="text-slate-400">
-                  The active license governing use of Umbra-Noesis software, documentation, and associated APIs.
-                  (Full text will be inserted here.)
-                </p>
-              </div>
-              <div>
-                <h3 class="font-semibold text-slate-100 mb-1">Historical Versions</h3>
-                <p class="text-slate-400">
-                  An archive of previous license versions for reference and compliance review.
-                </p>
-              </div>
-              <div>
-                <h3 class="font-semibold text-slate-100 mb-1">Component Licensing</h3>
-                <p class="text-slate-400">
-                  Notes on licensing for specific components such as AACP, PCe Systems, EVAA, E.V.E.,
-                  Umbra Link, and EVE OS.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Intellectual Property -->
-        <section id="ip" class="space-y-4">
-          <h2 class="text-xl sm:text-2xl font-semibold text-slate-50">
-            Intellectual Property & Branding
-          </h2>
-          <div class="un-section-card space-y-4 text-sm text-slate-300">
-            <p>
-              Umbra-Noesis maintains a unified IP strategy covering trademarks, patents, copyrights, and branding guidelines.
-              This section acts as the authoritative reference for all IP-related matters.
-            </p>
-            <div class="grid gap-4 sm:grid-cols-2 text-xs sm:text-sm">
-              <div class="space-y-2">
-                <h3 class="font-semibold text-slate-100">Trademarks</h3>
-                <p class="text-slate-400">
-                  List of registered and pending trademarks, including Umbra-Noesis, PCe, EVAA, EVE Systems, EVE OS, and related marks.
-                  (Specific filings will be enumerated here.)
-                </p>
-              </div>
-              <div class="space-y-2">
-                <h3 class="font-semibold text-slate-100">Patents & Patent-Pending</h3>
-                <p class="text-slate-400">
-                  Overview of filed patents, patent-pending work, and applicable jurisdictions.
-                  This section will be updated as new filings are made.
-                </p>
-              </div>
-              <div class="space-y-2">
-                <h3 class="font-semibold text-slate-100">Copyright Notices</h3>
-                <p class="text-slate-400">
-                  Copyright ownership statements for software, documentation, media, and training content authored by Umbra-Noesis.
-                </p>
-              </div>
-              <div class="space-y-2">
-                <h3 class="font-semibold text-slate-100">Brand Usage Guidelines</h3>
-                <p class="text-slate-400">
-                  Rules and recommendations for how the Umbra-Noesis brand, logos, and visual identity may be used by partners and third parties.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Corporate Structure -->
-        <section id="corp-structure" class="space-y-4">
-          <h2 class="text-xl sm:text-2xl font-semibold text-slate-50">
-            Corporate Structure
-          </h2>
-          <div class="un-section-card space-y-4 text-sm text-slate-300">
-            <p>
-              This section describes the high-level corporate structure of Umbra-Noesis, including the operating entity,
-              officers, and official business details.
-            </p>
-            <div class="grid gap-4 sm:grid-cols-3 text-xs sm:text-sm">
-              <div>
-                <h3 class="font-semibold text-slate-100 mb-1">Umbra-Noesis LLC</h3>
-                <p class="text-slate-400">
-                  Overview of the primary operating entity, formation jurisdiction, and high-level description.
-                  (Formal LLC details will be inserted here.)
-                </p>
-              </div>
-              <div>
-                <h3 class="font-semibold text-slate-100 mb-1">Officers & Roles</h3>
-                <p class="text-slate-400">
-                  Optional listing of founders, officers, and key roles, updated as the organization grows.
-                </p>
-              </div>
-              <div>
-                <h3 class="font-semibold text-slate-100 mb-1">Registered Details</h3>
-                <p class="text-slate-400">
-                  Business address (once finalized), EIN placeholder, and other registration identifiers as required.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Vendor & Partner Access -->
-        <section id="vendors-partners" class="space-y-4">
-          <h2 class="text-xl sm:text-2xl font-semibold text-slate-50">
-            Vendor & Partner Access
-          </h2>
-          <div class="un-section-card space-y-4 text-sm text-slate-300">
-            <p>
-              Guidance and entry point for OEMs, hardware partners, and software integrators who wish to work with Umbra-Noesis.
-            </p>
-            <div class="grid gap-4 sm:grid-cols-2 text-xs sm:text-sm">
-              <div>
-                <h3 class="font-semibold text-slate-100 mb-1">Integration Guidelines</h3>
-                <p class="text-slate-400">
-                  High-level requirements and expectations for hardware and software partners integrating Umbra-Noesis modules
-                  into their products or infrastructure.
-                </p>
-              </div>
-              <div>
-                <h3 class="font-semibold text-slate-100 mb-1">Partner Contact</h3>
-                <p class="text-slate-400 mb-2">
-                  For vendor, OEM, or partnership inquiries, please reach out via the approved channels below.
-                </p>
-                <ul class="space-y-1 text-slate-300">
-                  <li><span class="font-mono text-xs">admin@umbra-noesis.com</span> — Administrative & legal</li>
-                  <li><span class="font-mono text-xs">contact@umbra-noesis.com</span> — General business contact</li>
-                  <li><span class="font-mono text-xs">Umbra-Noesis@pm.me</span> — Secure email (Proton)</li>
-                  <li><span class="font-mono text-xs">umbra-ai.link@pm.me</span> — Optional link-layer / mesh inquiries</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Support -->
-        <section id="support" class="space-y-4">
-          <h2 class="text-xl sm:text-2xl font-semibold text-slate-50">
-            Support & Communication
-          </h2>
-          <div class="un-section-card space-y-4 text-sm text-slate-300">
-            <p>
-              All official Umbra-Noesis communications and support requests are routed through the channels below.
-              Personal Proton accounts and BridgetCore-specific addresses are not used for Portal operations.
-            </p>
-            <div class="grid gap-4 sm:grid-cols-3 text-xs sm:text-sm">
-              <div>
-                <h3 class="font-semibold text-slate-100 mb-1">Customer & Technical Support</h3>
-                <p class="text-slate-400">
-                  For product support, technical issues, and ecosystem questions.
-                  (Support process details will be defined here.)
-                </p>
-              </div>
-              <div>
-                <h3 class="font-semibold text-slate-100 mb-1">Business & Legal</h3>
-                <p class="text-slate-400">
-                  For licensing, legal, or partnership-related communication, please use the designated addresses listed above.
-                </p>
-              </div>
-              <div>
-                <h3 class="font-semibold text-slate-100 mb-1">Future Contact Forms</h3>
-                <p class="text-slate-400">
-                  A structured contact form and ticketing flow will be added in a future Portal update, backed by a microservice.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Official Update Block -->
-        <section id="updates" class="space-y-4">
-          <h2 class="text-xl sm:text-2xl font-semibold text-slate-50">
-            Official Umbra-Noesis Updates
-          </h2>
-          <div class="un-section-card space-y-3 text-sm text-slate-300">
-            <p class="text-slate-400 text-xs uppercase tracking-wide">
-              Founder / Corporate Announcements
-            </p>
-            <p>
-              This static block is reserved for short, official updates from Umbra-Noesis leadership.
-              In future Portal versions, this area will be backed by a small update microservice or CMS.
-            </p>
-
-            <!-- Example placeholder update -->
-            <div class="mt-3 rounded-xl border border-slate-800 bg-slate-900/70 px-4 py-3 text-xs sm:text-sm">
-              <p class="text-slate-400 text-[11px] uppercase tracking-wide mb-1">
-                Placeholder Update · v1 Portal Layout
-              </p>
-              <p class="text-slate-200">
-                The Umbra-Noesis Portal is now online as the central reference point for legal, licensing,
-                corporate, and vendor-facing information. Content will be expanded and formalized as filings are completed.
-              </p>
-            </div>
-          </div>
-        </section>
-
-      </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="border-t border-slate-800/70 bg-slate-950/90">
-      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6 text-xs text-slate-500">
-        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-          <div class="space-y-1">
-            <p>Umbra-Noesis Portal · umbra-noesis.net</p>
-            <p class="text-[11px]">
-              All trademarks, logos, and names are the property of their respective owners.
-            </p>
-          </div>
-          <div class="flex flex-wrap gap-3">
-            <a href="https://umbra-noesis.com" class="hover:text-[#B87333] transition-colors">
-              Ecosystem Main
-            </a>
-            <a href="#licensing" class="hover:text-[#B87333] transition-colors">
-              Licensing
-            </a>
-            <a href="#ip" class="hover:text-[#B87333] transition-colors">
-              IP & Trademarks
-            </a>
-            <a href="#corp-structure" class="hover:text-[#B87333] transition-colors">
-              Corporate
-            </a>
-            <a href="#support" class="hover:text-[#B87333] transition-colors">
-              Support
-            </a>
-          </div>
+<!-- ── Status strip ── -->
+<div style="background:#050508;border-top:1px solid rgba(185,115,51,0.08);border-bottom:1px solid rgba(185,115,51,0.08);">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center gap-x-8 gap-y-2">
+        <div class="flex items-center gap-2">
+            <span style="width:6px;height:6px;border-radius:50%;background:#B87333;box-shadow:0 0 6px rgba(185,115,51,0.6);display:inline-block;"></span>
+            <span class="font-hud text-xs text-slate-300">Portal — active</span>
         </div>
-      </div>
-    </footer>
+        <div class="flex items-center gap-2">
+            <span style="width:6px;height:6px;border-radius:50%;background:rgba(185,115,51,0.4);display:inline-block;"></span>
+            <span class="font-hud text-xs text-slate-400">Legal documentation — being formalized</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <span style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);display:inline-block;"></span>
+            <span class="font-hud text-xs text-slate-500">Contact forms — roadmap</span>
+        </div>
+    </div>
+</div>
 
-  </div>
+<!-- ── Main content ── -->
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
+
+    <!-- Licensing -->
+    <section id="licensing">
+        <div class="flex items-center gap-3 mb-5">
+            <i class="fa-solid fa-file-contract text-copper"></i>
+            <p class="font-hud text-xs tracking-[0.22em] uppercase text-copper">Licensing Terms</p>
+        </div>
+        <div class="section-block">
+            <p class="text-sm text-slate-400 leading-relaxed mb-6">
+                This section contains licensing terms governing the use of Umbra-Noesis software, documentation, and associated components. Formal license documents are being finalized in parallel with product development and will be published here.
+            </p>
+            <div class="grid gap-5 sm:grid-cols-3">
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-scroll text-copper text-xs"></i>
+                        <p class="font-display font-semibold text-sm text-slate-100">Current License</p>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">The active license governing use of Umbra-Noesis software, documentation, and associated APIs. Full text will be published as components reach release.</p>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-clock-rotate-left text-copper text-xs"></i>
+                        <p class="font-display font-semibold text-sm text-slate-100">Historical Versions</p>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">Archive of previous license versions for compliance and reference review, maintained as the license framework evolves.</p>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-layer-group text-copper text-xs"></i>
+                        <p class="font-display font-semibold text-sm text-slate-100">Component Licensing</p>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">Per-component licensing for AACP, PCe Systems, EVAA, EVE OS, Umbra Link, and VPMN. Each product layer carries specific terms aligned with its deployment model.</p>
+                </div>
+            </div>
+            <div class="mt-6 pt-5 border-t border-white/5">
+                <p class="font-hud text-xs text-slate-500">Licensing inquiries: <a href="mailto:admin@umbra-noesis.com" class="text-copper hover:underline">admin@umbra-noesis.com</a></p>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- IP & Trademarks -->
+    <section id="ip">
+        <div class="flex items-center gap-3 mb-5">
+            <i class="fa-solid fa-shield-halved text-copper"></i>
+            <p class="font-hud text-xs tracking-[0.22em] uppercase text-copper">Intellectual Property &amp; Branding</p>
+        </div>
+        <div class="section-block">
+            <p class="text-sm text-slate-400 leading-relaxed mb-6">
+                Umbra-Noesis maintains a unified IP strategy covering trademarks, patents, copyrights, and branding guidelines. This section is the authoritative reference for all IP-related matters within and adjacent to the ecosystem.
+            </p>
+            <div class="grid gap-5 sm:grid-cols-2">
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-trademark text-copper text-xs"></i>
+                        <p class="font-display font-semibold text-sm text-slate-100">Trademarks</p>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">Registered and pending trademarks including Umbra-Noesis, PCe™, EVAA™, EVE Systems™, EVE OS™, AACP™, Umbra Link™, and VPMN™. Filings enumerated as registrations are finalized.</p>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-atom text-copper text-xs"></i>
+                        <p class="font-display font-semibold text-sm text-slate-100">Patents &amp; Patent-Pending</p>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">Overview of filed patents, patent-pending work, and applicable jurisdictions. Updated as new filings are made.</p>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-copyright text-copper text-xs"></i>
+                        <p class="font-display font-semibold text-sm text-slate-100">Copyright Notices</p>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">Copyright ownership for software, documentation, media, and training content authored by Umbra-Noesis LLC. All rights reserved unless explicitly licensed.</p>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-palette text-copper text-xs"></i>
+                        <p class="font-display font-semibold text-sm text-slate-100">Brand Usage Guidelines</p>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">Rules for how the Umbra-Noesis brand, logos, and visual identity may be used by partners and third parties. Contact the portal before using Umbra-Noesis marks in any external materials.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Corporate Structure -->
+    <section id="corp">
+        <div class="flex items-center gap-3 mb-5">
+            <i class="fa-solid fa-sitemap text-copper"></i>
+            <p class="font-hud text-xs tracking-[0.22em] uppercase text-copper">Corporate Structure</p>
+        </div>
+        <div class="section-block">
+            <p class="text-sm text-slate-400 leading-relaxed mb-6">
+                Umbra-Noesis LLC is the primary operating entity for the ecosystem — the legal entity behind all products, IP, and external agreements.
+            </p>
+            <div class="grid gap-5 sm:grid-cols-3">
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-building text-copper text-xs"></i>
+                        <p class="font-display font-semibold text-sm text-slate-100">Umbra-Noesis LLC</p>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">The primary operating entity. Formation jurisdiction and formal registration details will be listed here as filings are completed.</p>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-user-tie text-copper text-xs"></i>
+                        <p class="font-display font-semibold text-sm text-slate-100">Leadership &amp; Roles</p>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">Officers and key roles listed as the organization formalizes and grows. Available on request for due diligence.</p>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-id-card text-copper text-xs"></i>
+                        <p class="font-display font-semibold text-sm text-slate-100">Registered Details</p>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">Business registration identifiers (EIN, registered address) available to verified partners and vendors through the contact channels below.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Vendor & Partner Access -->
+    <section id="vendors">
+        <div class="flex items-center gap-3 mb-5">
+            <i class="fa-solid fa-handshake text-copper"></i>
+            <p class="font-hud text-xs tracking-[0.22em] uppercase text-copper">Vendor &amp; Partner Access</p>
+        </div>
+        <div class="section-block">
+            <p class="text-sm text-slate-400 leading-relaxed mb-6">
+                Entry point for OEM hardware partners, software integrators, and licensed operators who want to build with or on top of the Umbra-Noesis stack.
+            </p>
+            <div class="grid gap-5 sm:grid-cols-2 mb-6">
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-plug text-copper text-xs"></i>
+                        <p class="font-display font-semibold text-sm text-slate-100">Integration Guidelines</p>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">High-level requirements and expectations for hardware and software partners integrating Umbra-Noesis modules into their products or infrastructure. Available on request through the vendor contact channel.</p>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-boxes-stacked text-copper text-xs"></i>
+                        <p class="font-display font-semibold text-sm text-slate-100">OEM &amp; Licensing Tiers</p>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">Commercial licensing arrangements for OEMs building hardware around PCe specifications or deploying AACP/EVE OS in licensed products. Contact via the channels below.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="flex items-center gap-3 mb-5">
+            <i class="fa-solid fa-envelope text-copper"></i>
+            <p class="font-hud text-xs tracking-[0.22em] uppercase text-copper">Contact Channels</p>
+        </div>
+        <div class="section-block">
+            <p class="text-sm text-slate-400 leading-relaxed mb-6">
+                All official Umbra-Noesis communications are routed through the channels below. Use the appropriate address for your inquiry type.
+            </p>
+            <div class="space-y-3">
+                <div class="contact-row">
+                    <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style="background:rgba(185,115,51,0.08);border:1px solid rgba(185,115,51,0.2);">
+                        <i class="fa-solid fa-scale-balanced text-xs text-copper"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="font-display font-semibold text-xs text-slate-100 mb-0.5">Administrative &amp; Legal</p>
+                        <a href="mailto:admin@umbra-noesis.com" class="font-hud text-xs text-copper hover:underline break-all">admin@umbra-noesis.com</a>
+                        <p class="text-xs text-slate-500 mt-0.5">Licensing, IP, legal, and corporate matters</p>
+                    </div>
+                </div>
+                <div class="contact-row">
+                    <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style="background:rgba(185,115,51,0.08);border:1px solid rgba(185,115,51,0.2);">
+                        <i class="fa-solid fa-briefcase text-xs text-copper"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="font-display font-semibold text-xs text-slate-100 mb-0.5">General Business</p>
+                        <a href="mailto:contact@umbra-noesis.com" class="font-hud text-xs text-copper hover:underline break-all">contact@umbra-noesis.com</a>
+                        <p class="text-xs text-slate-500 mt-0.5">Partnerships, vendor inquiries, general outreach</p>
+                    </div>
+                </div>
+                <div class="contact-row">
+                    <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style="background:rgba(0,180,216,0.08);border:1px solid rgba(0,180,216,0.2);">
+                        <i class="fa-solid fa-lock text-xs text-blue"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="font-display font-semibold text-xs text-slate-100 mb-0.5">Secure Mail (Proton)</p>
+                        <a href="mailto:umbra-noesis@pm.me" class="font-hud text-xs text-blue hover:underline break-all">umbra-noesis@pm.me</a>
+                        <p class="text-xs text-slate-500 mt-0.5">Encrypted communication for sensitive inquiries</p>
+                    </div>
+                </div>
+                <div class="contact-row">
+                    <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style="background:rgba(0,180,216,0.08);border:1px solid rgba(0,180,216,0.2);">
+                        <i class="fa-solid fa-circle-nodes text-xs text-blue"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="font-display font-semibold text-xs text-slate-100 mb-0.5">Umbra Link / Mesh Inquiries</p>
+                        <a href="mailto:umbra-ai.link@pm.me" class="font-hud text-xs text-blue hover:underline break-all">umbra-ai.link@pm.me</a>
+                        <p class="text-xs text-slate-500 mt-0.5">Networking, identity, and VPMN-layer inquiries</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Official Updates -->
+    <section id="updates">
+        <div class="flex items-center gap-3 mb-5">
+            <i class="fa-solid fa-bullhorn text-copper"></i>
+            <p class="font-hud text-xs tracking-[0.22em] uppercase text-copper">Official Updates</p>
+        </div>
+        <div class="section-block">
+            <p class="text-sm text-slate-400 leading-relaxed mb-5">
+                Official announcements and corporate updates from Umbra-Noesis. This section will be backed by a structured update system in a future Portal release.
+            </p>
+            <div class="space-y-3">
+                <div class="p-4 rounded-xl" style="background:#111827;border:1px solid rgba(185,115,51,0.15);">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="badge-copper">Corporate</span>
+                        <span class="font-hud text-[10px] text-slate-600">June 2026</span>
+                    </div>
+                    <p class="text-sm text-slate-200 leading-relaxed">
+                        The Umbra-Noesis Portal is live as the central reference for legal, licensing, corporate, and vendor-facing information. Phase 2 of all ecosystem sites is now complete. Legal documentation is being formalized in parallel with product development and will be published here as filings are completed.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- ── Callout ── -->
+<section style="background:#050508;border-top:1px solid rgba(185,115,51,0.08);border-bottom:1px solid rgba(185,115,51,0.08);">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div>
+            <p class="font-display text-xl sm:text-2xl font-bold text-slate-50 mb-1">
+                Questions about <span class="text-glow-copper">licensing or IP?</span>
+            </p>
+            <p class="text-sm text-slate-400">Reach out through the official contact channels. We respond to all serious inquiries.</p>
+        </div>
+        <div class="flex flex-wrap gap-3 shrink-0">
+            <a href="mailto:admin@umbra-noesis.com" class="btn-primary font-display">
+                <i class="fa-solid fa-envelope text-sm"></i> Legal Contact
+            </a>
+            <a href="https://umbra-noesis.com" class="btn-ghost font-display">
+                <i class="fa-solid fa-layer-group text-sm"></i> Ecosystem Home
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer style="background:#000000;border-top:1px solid rgba(185,115,51,0.07);">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div style="width:28px;height:28px;border-radius:0.5rem;overflow:hidden;border:1px solid rgba(185,115,51,0.25);display:flex;align-items:center;justify-content:center;">
+                    <img src="assets/img/un-main-logo.png" alt="Umbra-Noesis" style="width:24px;height:24px;object-fit:contain;opacity:0.75;"/>
+                </div>
+                <div>
+                    <p class="font-display font-semibold text-sm text-slate-300">Umbra-Noesis Portal</p>
+                    <p class="font-hud text-[10px] text-slate-600 tracking-widest uppercase">Umbra-Noesis LLC · umbra-noesis.net</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="#licensing"  class="font-hud text-xs text-slate-500 hover:text-copper transition-colors">Licensing</a>
+                <span class="text-slate-700">·</span>
+                <a href="#ip"         class="font-hud text-xs text-slate-500 hover:text-copper transition-colors">IP</a>
+                <span class="text-slate-700">·</span>
+                <a href="#corp"       class="font-hud text-xs text-slate-500 hover:text-copper transition-colors">Corporate</a>
+                <span class="text-slate-700">·</span>
+                <a href="#contact"    class="font-hud text-xs text-slate-500 hover:text-copper transition-colors">Contact</a>
+                <span class="text-slate-700">·</span>
+                <a href="https://umbra-noesis.com" class="font-hud text-xs text-slate-500 hover:text-copper transition-colors">Ecosystem</a>
+            </div>
+        </div>
+        <div class="mt-5 pt-5 border-t border-white/5 text-center">
+            <p class="font-hud text-[10px] text-slate-600">All trademarks, logos, and names are the property of Umbra-Noesis LLC or their respective owners.</p>
+        </div>
+    </div>
+</footer>
+
 </body>
 </html>
